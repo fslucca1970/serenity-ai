@@ -1,4 +1,4 @@
-     /* style.css */
+        /* style.css */
 
     body {
         font-family: 'Arial', sans-serif;
@@ -9,9 +9,15 @@
         justify-content: space-between; /* Para empurrar o rodapé para baixo */
         align-items: center;
         min-height: 100vh;
-        background-color: rgb(0, 72, 18); /*(255, 255, 255, 0.1); /* Fundo levemente transparente para o container do chat */
+        background-color: #ffffff; /* Fundo da página em branco, conforme solicitado */
+        color: #333333; /* Cor do texto padrão para contraste com o fundo branco */
+    }
+
+    .chat-container {
+        background-color: #ffffff; /* Fundo do container do chat em branco */
         border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border: 2px solid rgb(0, 72, 18); /* Borda do container em rgb(0, 72, 18) */
         width: 90%;
         max-width: 700px;
         margin: 20px auto; /* Centraliza e adiciona margem */
@@ -23,15 +29,15 @@
     }
 
     header {
-        background-color: rgba(0, 0, 0, 0.3); /* Fundo do cabeçalho */
-        color: #ffffff; /* Cor do texto do cabeçalho */
+        background-color: #f8f8f8; /* Fundo do cabeçalho levemente cinza */
+        color: #333333; /* Cor do texto do cabeçalho */
         padding: 15px 20px;
         text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid #eeeeee;
     }
 
     h1 {
-        color: rgb(0, 72, 18); /* Cor do título H1 conforme solicitado */
+        /* A cor do h1 será definida inline no index.html para garantir prioridade */
         margin: 0; /* Remove margem padrão do h1 */
         font-size: 1.8em;
         font-weight: 600;
@@ -45,8 +51,8 @@
         flex-grow: 1;
         padding: 20px;
         overflow-y: auto;
-        background-color: rgba(0, 0, 0, 0.1); /* Fundo da área de mensagens */
-        color: #e0e0e0; /* Cor do texto das mensagens para contraste */
+        background-color: #fdfdfd; /* Fundo da área de mensagens em branco */
+        color: #333333; /* Cor do texto das mensagens */
     }
 
     .message {
@@ -59,13 +65,13 @@
     }
 
     .user-message {
-        background-color: rgba(255, 255, 255, 0.2); /* Mensagem do usuário */
+        background-color: #e0ffe0; /* Fundo da mensagem do usuário em verde bem claro */
         margin-left: auto;
         text-align: right;
     }
 
     .ai-message {
-        background-color: rgba(0, 0, 0, 0.4); /* Mensagem da IA */
+        background-color: #f0f0f0; /* Fundo da mensagem da IA em cinza claro */
         margin-right: auto;
         text-align: left;
     }
@@ -74,34 +80,34 @@
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        color: #ffffff; /* Cor do nome do remetente (Serenity AI:, Você:) */
+        color: rgb(0, 72, 18); /* Cor do nome do remetente (Serenity AI:, Você:) */
     }
 
     .message-input {
         display: flex;
         padding: 15px 20px;
-        background-color: rgba(0, 0, 0, 0.3); /* Fundo da área de input */
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: #f8f8f8; /* Fundo da área de input */
+        border-top: 1px solid #eeeeee;
     }
 
     .message-input input[type="text"] {
         flex-grow: 1;
         padding: 10px 15px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid #cccccc;
         border-radius: 5px;
         margin-right: 10px;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #ffffff; /* Cor do texto digitado */
+        background-color: #ffffff; /* Fundo do campo de texto em branco */
+        color: #333333; /* Cor do texto digitado */
         font-size: 1em;
     }
 
     .message-input input[type="text"]::placeholder {
-        color: rgba(255, 255, 255, 0.7); /* Cor do placeholder */
+        color: #888888; /* Cor do placeholder */
     }
 
     .message-input button {
         background-color: rgb(0, 72, 18); /* Cor do botão de enviar e reset conforme solicitado */
-        color: white;
+        color: white; /* Cor do texto do botão em branco */
         border: none;
         padding: 10px 20px;
         border-radius: 5px;
@@ -120,9 +126,9 @@
     footer {
         text-align: center;
         padding: 15px;
-        color: rgba(255, 255, 255, 0.6); /* Cor do texto do rodapé */
+        color: #666666; /* Cor do texto do rodapé */
         font-size: 0.8em;
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: #f8f8f8; /* Fundo do rodapé levemente cinza */
         width: 100%; /* Garante que o rodapé ocupe toda a largura */
         box-sizing: border-box; /* Inclui padding na largura total */
         margin-top: 20px; /* Adiciona um pouco de margem acima do rodapé */
@@ -133,7 +139,7 @@
     }
 
     footer a {
-        color: #a0e0a0; /* Uma cor de link que combine com o verde */
+        color: rgb(0, 72, 18); /* Cor do link do rodapé em rgb(0, 72, 18) */
         text-decoration: none;
     }
 
