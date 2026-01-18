@@ -1,25 +1,24 @@
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f0f2f5;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        margin: 0;
-        color: #333;
+        background-color: rgb(0, 72, 18); /* Nova cor de fundo */
     }
 
     .chat-container {
-        background-color: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 500px;
+        background-color: rgba(255, 255, 255, 0.9); /* Um branco semi-transparente para o chat box */
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 600px;
+        height: 80vh;
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        padding: 25px;
-        box-sizing: border-box;
     }
 
     h1 {
@@ -137,4 +136,25 @@
         button {
             width: 100%;
         }
+    }
+    
+    /* Estilo para o rodapé */
+    .app-footer {
+        text-align: center;
+        padding: 15px;
+        color: rgba(255, 255, 255, 0.7); /* Cor do texto para contrastar com o fundo escuro */
+        font-size: 0.8em;
+        position: absolute; /* Para fixar no fundo da tela */
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box; /* Garante que padding não aumente a largura */
+    }
+
+    .app-footer a {
+        color: #a0e0a0; /* Uma cor de link que combine com o verde */
+        text-decoration: none;
+    }
+
+    .app-footer a:hover {
+        text-decoration: underline;
     }
