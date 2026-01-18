@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const placeholder = addMessage('ai', 'meditando…', 'meditando');
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/chat', {
+            const response = await fetch('https://serenity-ai-y7cq.onrender.com/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: text })
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao enviar mensagem:', err);
             placeholder.remove(); // garante que o placeholder não fique pendente
             addMessage('ai',
-                'Desculpe, não consegui me conectar ao Serenity AI. Por favor, tente novamente mais tarde.'
+                'Desculpe, o seu Personal Monge está a dormir... não consegue se conectar ao Serenity AI neste momento. Por favor, tente novamente mais tarde.'
             );
         }
     }
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         userInput.value = '';
 
         try {
-            await fetch('http://127.0.0.1:5000/reset', {
+            const response = await fetch('https://serenity-ai-y7cq.onrender.com/reset', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
             });

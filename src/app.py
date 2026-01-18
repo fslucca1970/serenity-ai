@@ -10,7 +10,7 @@ load_dotenv()
 print(f"DEBUG: OPENAI_API_KEY carregada: {os.getenv('OPENAI_API_KEY')[:10]}...")
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "https://fsluca1970.github.io"}})
 
 @app.route('/chat', methods=['POST'])
 def chat():
