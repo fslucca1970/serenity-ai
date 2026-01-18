@@ -21,8 +21,8 @@ def get_serenity_response(user_id, user_message):
         conversation_histories[user_id] = [
             {"role": "system", "content": MONK_PROMPT}
             ]
-    conversation_histories[user_id].append({"role": "user", "content": user_message})
-    try:
+   conversation_histories[user_id].append({"role": "user", "content": user_message})
+   try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo", # Ou o modelo que você está usando
             messages=conversation_histories[user_id]
