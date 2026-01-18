@@ -1,36 +1,41 @@
+      // script.js
+
     document.addEventListener('DOMContentLoaded', () => {
-        const chatBox = document.getElementById('chat-box');
+        const chatMessages = document.getElementById('chat-messages');
         const userInput = document.getElementById('user-input');
         const sendButton = document.getElementById('send-button');
         const resetButton = document.getElementById('reset-button');
 
-        // URL do seu backend Flask (certifique-se de que está rodando!)
-        const API_BASE_URL = 'http://127.0.0.1:5000'; // Mantenha esta URL para testes locais
-
-        // Função para adicionar mensagem ao chat
+        // Função para adicionar uma mensagem ao chat
         function addMessage(sender, message) {
             const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', `${sender}-message`);
-            messageDiv.textContent = message;
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight; // Rola para a última mensagem
+            messageDiv.classList.add('message');
+            if (sender === 'user') {
+                messageDiv.classList.add('user-message');
+                messageDiv.innerHTML = `<strong>Você:</strong> ${message}`;
+            } else {
+                messageDiv.classList.add('ai-message');
+                messageDiv.innerHTML = `<strong>Serenity AI:</strong> ${message}`;
+            }
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Rola para a última mensagem
         }
 
-        // Função para enviar mensagem ao backend
+        // Função para enviar mensagem
         async function sendMessage() {
             const message = userInput.value.trim();
             if (message === '') return;
 
             addMessage('user', message);
-            userInput.value = ''; // Limpa o campo de entrada
+            userInput.value = ''; // Limpa o input
 
             try {
-                const response = await fetch(`${API_BASE_URL}/chat`, {
+                const response = await fetch('http://127.0.0.1:5000/chat', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ user_id: 'fabio_user', message: message }),
+                    body: JSON.stringify({ message: message })
                 });
 
                 if (!response.ok) {
@@ -38,46 +43,52 @@
                 }
 
                 const data = await response.json();
-                addMessage('bot', data.response);
+                addMessage('ai', data.response);
             } catch (error) {
                 console.error('Erro ao enviar mensagem:', error);
-                addMessage('bot', 'Sinto muito, meu amigo. Parece que minha mente está um pouco turva no momento. Por favor, tente novamente mais tarde.');
+                addMessage('ai', 'Desculpe, não consegui me conectar ao Serenity AI. Por favor, tente novamente mais tarde.');
             }
         }
 
         // Função para reiniciar a conversa
         async function resetConversation() {
+            // Limpa as mensagens visíveis no chat, exceto a inicial da IA
+            chatMessages.innerHTML = `
+                <div class="message ai-message">
+                    <strong>Serenity AI:</strong> Olá! Eu sou Serenity AI, seu monge digital. Como posso ajudá-lo a encontrar a paz hoje?
+                </div>
+            `;
+            userInput.value = ''; // Limpa o input
+
             try {
-                const response = await fetch(`${API_BASE_URL}/reset`, {
+                const response = await fetch('http://127.0.0.1:5000/reset', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ user_id: 'fabio_user' }),
+                        'Content-Type': 'application/json'
+                    }
                 });
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
-                const data = await response.json();
-                // Limpa o chatbox e adiciona a mensagem de reset do bot
-                chatBox.innerHTML = '';
-                addMessage('bot', 'Olá! Eu sou Serenity AI, seu monge digital. Como posso ajudá-lo a encontrar a paz hoje?');
-                addMessage('bot', data.message); // Mensagem de confirmação do reset
+                // Opcional: Adicionar uma mensagem de confirmação de reset
+                // addMessage('ai', 'Conversa reiniciada. Como posso ajudar agora?');
+
             } catch (error) {
                 console.error('Erro ao reiniciar conversa:', error);
-                addMessage('bot', 'Sinto muito, não consegui reiniciar a conversa. Por favor, tente novamente.');
+                addMessage('ai', 'Desculpe, não consegui reiniciar a conversa. Por favor, tente novamente.');
             }
         }
 
         // Event Listeners
         sendButton.addEventListener('click', sendMessage);
         userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) { // Envia ao pressionar Enter, mas permite Shift+Enter para nova linha
-                e.preventDefault(); // Previne a quebra de linha padrão do Enter
+            if (e.key === 'Enter' && !e.shiftKey) { // Envia ao pressionar Enter, mas não Shift+Enter
+                e.preventDefault(); // Previne quebra de linha no input
                 sendMessage();
             }
         });
         resetButton.addEventListener('click', resetConversation);
     });
+
