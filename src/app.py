@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from llm_service import get_serenity_response, reset_conversation
-from config import OPENAI_API_KEY, MONK_PROMPT
+# from config import OPENAI_API_KEY, MONK_PROMPT
 import os
 from dotenv import load_dotenv
 from flask_cors import CORS
@@ -35,5 +35,5 @@ def reset():
 def home():
     return "Bem-vindo ao Serenity AI Backend! Use a rota /chat para interagir."
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=os.getenv('PORT', 5000))
+# if __name__ == '__main__':
+#    app.run(debug=True, host='0.0.0.0', port=os.getenv('PORT', 5000))

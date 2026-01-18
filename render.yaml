@@ -1,0 +1,11 @@
+# render.yaml
+services:
+  - type: web
+    name: serenity-ai-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn src.app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.18 # Ou a versão do Python que você está usando localmente
+      # Não coloque sua chave da API aqui! Ela será adicionada no painel do Render.
