@@ -1,30 +1,33 @@
-       <!DOCTYPE html>
+    <!DOCTYPE html>
     <html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Serenity AI Chat</title>
+        <title>Personal Monge - Serenity AI</title> <!-- Título da aba do navegador -->
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div class="chat-container">
-             <h1>Personal <i>Monge</i> - <i>Serenity AI</i></h1>
-            <div class="chat-box" id="chat-box">
-                <div class="message bot-message">
-                    Olá! Eu sou Serenity AI, seu monge digital. Como posso ajudá-lo a encontrar a paz hoje?
+            <header>
+                <h1><i>Personal</i> Monge - <i>Serenity AI</i></h1> <!-- Título na interface -->
+            </header>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message ai-message">
+                    <strong>Serenity AI:</strong> Olá! Eu sou Serenity AI, seu monge digital. Como posso ajudá-lo a encontrar a paz hoje?
                 </div>
             </div>
-            <div class="input-area">
-                <textarea id="user-input" placeholder="Digite sua mensagem aqui..." rows="3"></textarea>
-                <div class="buttons">
-                    <button id="send-button" class="send-button">Enviar</button>
-                    <button id="reset-button" class="reset-button">Reiniciar Conversa</button>
-                </div>
+            <div class="message-input">
+                <input type="text" id="user-input" placeholder="Digite sua mensagem aqui...">
+                <button id="send-button">Enviar</button>
+                <button id="reset-button">Reiniciar Conversa</button> <!-- Adicionei o botão de reset aqui -->
             </div>
         </div>
-	    <footer class="app-footer">
-                 <p>Desenvolvido por AGILLE AI com MML Open AI - <a href="https://www.agilleai.com" target="_blank">www.agilleai.com</a></p>
+
+        <!-- Rodapé fora do chat-container para melhor posicionamento -->
+        <footer>
+            <p>Desenvolvido por AGILLE AI com MML Open AI - <a href="https://www.agilleai.com" target="_blank">www.agilleai.com</a></p>
         </footer>
+
         <script src="js/script.js"></script>
     </body>
     </html>
