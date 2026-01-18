@@ -1,13 +1,14 @@
 
 # Ignorar variáveis de ambiente
-        .env
+.env
+.env.example # Adicionando .env.example para ser ignorado também
 
 # Ignorar ambiente virtual
-        venv/
+venv/
 
 # Ignorar arquivos de cache do Python
-        __pycache__/
-        *.pyc
+__pycache__/
+*.pyc
 
 # Ignorar arquivos de teste (opcional, mas boa prática se não for parte do projeto principal)
-        test_api.py
+test_api.py
