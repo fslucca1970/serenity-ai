@@ -34,8 +34,8 @@ def get_serenity_response(user_id, user_message):
         print(f"Erro ao chamar a API da OpenAI: {e}")
         return "Sinto muito, meu amigo. Parece que minha mente está um pouco turva no momento. Por favor, tente novamente mais tarde."
 
- def reset_conversation(user_id):
+def reset_conversation(user_id):
    if user_id in conversation_histories:
         del conversation_histories[user_id]
         return "Seu histórico de conversa foi purificado. Estamos prontos para um novo começo."
-    return "Não há histórico para purificar para este usuário."
+   return "Não há histórico para purificar para este usuário."
