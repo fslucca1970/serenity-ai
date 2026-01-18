@@ -30,7 +30,7 @@ def get_serenity_response(user_id, user_message):
         serenity_response = response.choices[0].message.content
         conversation_histories[user_id].append({"role": "assistant", "content": serenity_response})
         return serenity_response
-    except Exception as e:
+   except Exception as e:
         print(f"Erro ao chamar a API da OpenAI: {e}")
         return "Sinto muito, meu amigo. Parece que minha mente está um pouco turva no momento. Por favor, tente novamente mais tarde."
 
