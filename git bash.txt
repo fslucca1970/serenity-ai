@@ -1,0 +1,7 @@
+bash
+
+    git add .
+
+    git commit -m "Tenta CORS com origins='*' para diagnostico"
+
+    git push origin main
